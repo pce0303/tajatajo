@@ -8,11 +8,14 @@ let i = 0;
 let time = 60;
 let myScore = 0;
 let timeID;
+let timerOn = false;
+let isPaused = false;
 
 const wordDisplay = document.querySelector('.word-display');
 const wordInput = document.querySelector('.word-input');
 const score = document.querySelector('.score');
 const timer = document.querySelector('.timer');
+const timerButton = document.querySelector('.start');
 
 const updateDisplay = () => {
   if (i < words.length) {
@@ -43,14 +46,32 @@ const handleSubmit = (e) => {
 }
 
 const startTimer = () => {
-  if (!timeID) {
+  if (!timeID && !timerOn) {
     timeID = setInterval(countdown, 1000);
+    timerOn = true;
+    timerButton.textContent = '타이머 중지';
+  } else {
+    if(isPaused) {
+      timeID = setInterval(countdown, 1000);
+      timerButton.textContent = '타이머 중지';
+    } else {
+      clearInterval(timeID);
+      timeID = null;
+      timerButton.textContent = '타이머 시작';
+    }
+    isPaused = !isPaused;
   }
 }
 
 const countdown = () => {
   time--;
   updateDisplay();
+  if(time <= 0){
+    clearInterval(timeID);
+    timeID = null;
+    wordDisplay.textContent = '시간이 다 되었습니다ㅜㅜ';
+    wordInput.disabled = true;
+  }
 }
 
 const handleEnter = (event) => {
