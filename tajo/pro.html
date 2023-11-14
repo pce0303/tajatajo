@@ -6,14 +6,15 @@
     <link rel="stylesheet" href="pro.css">
 </head>
 <body>
+    <div class="box">
     <div class = "header">
-        <h1>타자 게임</h1>
+        <h1>타자 게임</h1> <br>
     </div>
     <div class="word-display"></div>
     <div class="word-input-box">
-        <input type="text" class = "word-input" />
-        <button onclick="handleSubmit()" type="button" class="submit">확인</button>
-        <button type="button" onclick="startTimer()" class="start">타이머 시작</button>
+        <input type="text" class = "word-input" /><br>
+        <button onclick="handleSubmit()" type="button" class="submit">✅</button>
+        <button type="button" onclick="startTimer()" class="start">⏰</button>
     </div>
     
     <div class="game-info">
@@ -24,6 +25,7 @@
             점수: <span class ="score">0</span>점
         </div>
     </div>
+</div>
 <script src="./pro.js"></script>
 </body>
 </html>
