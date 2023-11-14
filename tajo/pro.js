@@ -25,6 +25,7 @@ const updateDisplay = () => {
     wordInput.disabled = true;
     clearInterval(timeID);
     timeID = null;
+    timerButton.textContent = '⏰';
   }
   score.textContent = myScore;
   timer.textContent = time;
@@ -49,15 +50,15 @@ const startTimer = () => {
   if (!timeID && !timerOn) {
     timeID = setInterval(countdown, 1000);
     timerOn = true;
-    timerButton.textContent = '타이머 중지';
+    timerButton.textContent = '⌛';
   } else {
     if(isPaused) {
       timeID = setInterval(countdown, 1000);
-      timerButton.textContent = '타이머 중지';
+      timerButton.textContent = '⌛';
     } else {
       clearInterval(timeID);
       timeID = null;
-      timerButton.textContent = '타이머 시작';
+      timerButton.textContent = '⏰';
     }
     isPaused = !isPaused;
   }
